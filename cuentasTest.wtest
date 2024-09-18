@@ -1,0 +1,29 @@
+import cuentas.*
+
+describe "cuentas" {
+
+    test "cuenta con gastos" {
+        cuentaGastos.costoOperacion(20)
+        cuentaGastos.depositar(1000)
+
+        assert.equals(980, cuentaGastos.saldo())
+    }
+
+    test "cuenta combinada" {
+        cuentaGastos.costoOperacion(50)
+        cuentaCorriente.saldo(500)
+
+        cuentaCombinada.primaria(cuentaGastos)
+        cuentaCombinada.secundaria(cuentaCorriente)
+
+        cuentaCombinada.depositar(100)
+        assert.equals(50, cuentaGastos.saldo())
+
+        cuentaCombinada.extraer(200)
+        assert.equals(300, cuentaCorriente.saldo())
+
+        assert.equals(350, cuentaCombinada.saldo())
+        
+    }
+
+}
