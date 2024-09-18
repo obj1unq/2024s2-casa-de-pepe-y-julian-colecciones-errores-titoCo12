@@ -1,9 +1,12 @@
 import cosas.* 
+import cuentas.*
 
 object casa {
 	const property cosas = []
+	var property cuenta = cuentaCorriente
 
 	method comprar(cosa) {
+		cuenta.extraer(cosa.precio())
 		cosas.add(cosa)
 	}
 
